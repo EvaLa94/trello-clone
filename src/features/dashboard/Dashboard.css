@@ -12,4 +12,5 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: left;
+  align-items: start;
 }

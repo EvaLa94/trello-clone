@@ -23,10 +23,10 @@ export const Dashboard = ({ dashboardId }: dashboardProps) => {
         <h1>Items</h1>
       </header>
       <div className="list-item-container">
-        {listItems.map((item) => (
-          <ListItem item={item.title} />
+        {listItems.map((listItem) => (
+          <ListItem key={listItem.listId} listId={listItem.listId} />
         ))}
-        <div className="container">
+        <div className="light-container">
           <InputButton
             target={'list'}
             callback={addNewListItem}

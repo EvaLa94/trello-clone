@@ -8,11 +8,11 @@ interface DashboardType {
 }
 
 interface DashboardState {
-  dashboardItems: DashboardType[];
+  dashboards: DashboardType[];
 }
 
 const initialState: DashboardState = {
-  dashboardItems: [{ dashboardId: 'first' }],
+  dashboards: [{ dashboardId: 'first' }],
 };
 
 export const dashboardSlice = createSlice({
@@ -20,12 +20,11 @@ export const dashboardSlice = createSlice({
   initialState,
   reducers: {
     addNewDashboard: (state, action: PayloadAction<DashboardType>) => {
-      state.dashboardItems.push(action.payload);
+      state.dashboards.push(action.payload);
     },
   },
 });
 
 export const { addNewDashboard } = dashboardSlice.actions;
-export const selectDashboard = (state: RootState) =>
-  state.dashboard.dashboardItems;
+export const selectDashboard = (state: RootState) => state.dashboard.dashboards;
 export default dashboardSlice.reducer;

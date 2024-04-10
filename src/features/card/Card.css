@@ -1,0 +1,11 @@
+.card-container p {
+  padding: 8px 12px 4px;
+  color: #b6c2cf;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 24px;
+  background-color: #22272b;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}

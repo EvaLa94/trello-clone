@@ -1,6 +1,5 @@
-.input-button-container {
-  display: flex;
-  flex-direction: column;
+.input-title {
+  cursor: pointer;
 }
 
 input {

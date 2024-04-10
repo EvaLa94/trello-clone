@@ -11,18 +11,32 @@
   height: 100vh;
 }
 
-.container {
-  background-color: #101204;
+.dark-container,
+.light-container {
   color: #b6c2cf;
   border-radius: 12px;
   width: 270px;
   margin: 6px;
   display: flex;
-  padding: 6px 8px 6px 12px;
+  padding: 8px;
   flex-direction: column;
   justify-content: center;
 }
 
-.container h2 {
+.dark-container {
+  background-color: #101204;
+}
+
+.light-container {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.light-container:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-container h2,
+.light-container h2 {
   font-size: 14px;
+  padding: 6px 8px 6px 12px;
 }
