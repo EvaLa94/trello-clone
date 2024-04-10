@@ -2,11 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import './InputButton.css';
 import { ListItemType } from '../listItem/listItemSlice';
+import { CardType } from '../card/cardSlice';
 
 interface InputButtonProps {
   target: string;
   callback: Function; // TODO: set a proper type
-  data: ListItemType;
+  data: ListItemType | CardType;
 }
 export const InputButton = ({ target, callback, data }: InputButtonProps) => {
   const [value, setValue] = useState('');
@@ -28,8 +29,8 @@ export const InputButton = ({ target, callback, data }: InputButtonProps) => {
   const toggleHidden = () => setIsHidden(!isHidden);
 
   return (
-    <div className="input-button-container">
-      <h2 hidden={isHidden} onClick={toggleHidden}>
+    <div>
+      <h2 className="input-title" hidden={isHidden} onClick={toggleHidden}>
         + Add a {target}
       </h2>
       <div>
