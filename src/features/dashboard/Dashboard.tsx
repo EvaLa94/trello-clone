@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
-
+import { nanoid } from '@reduxjs/toolkit';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addNewListItem } from './dashboardSlice';
+import { ListItem } from '../listItem/ListItem';
+import { selectListItems, addNewListItem } from '../listItem/listItemSlice';
+import { InputButton } from '../shared/InputButton';
 
-export const Dashboard = () => {
-  const [listItem, setListItem] = useState('');
-  const list = useAppSelector((state) => state.dashboard.list);
+import './Dashboard.css';
+import '../../App.css';
+
+interface dashboardProps {
+  dashboardId: string;
+}
+
+export const Dashboard = ({ dashboardId }: dashboardProps) => {
+  const listItems = useAppSelector(selectListItems).filter(
+    (listItem) => listItem.dashboardId === dashboardId
+  );
   const dispatch = useAppDispatch();
 
-  const onClick = () => {
-    dispatch(addNewListItem(listItem));
-    setListItem('');
-  };
-
   return (
-    <div>
-      <h1>Items</h1>
-      {list.map((item) => (
-        <p key={item}>{item}</p>
-      ))}
-      <h2>Add new</h2>
-      <input value={listItem} onChange={(e) => setListItem(e.target.value)} />
-      <button onClick={onClick}>Add new</button>
-    </div>
+    <main className="main-dashboard">
+      <header className="title">
+        <h1>Items</h1>
+      </header>
+      <div className="list-item-container">
+        {listItems.map((item) => (
+          <ListItem item={item.title} />
+        ))}
+        <div className="container">
+          <InputButton
+            target={'list'}
+            callback={addNewListItem}
+            data={{ dashboardId, listId: nanoid(), title: '' }}
+          />
+        </div>
+      </div>
+    </main>
   );
 };
