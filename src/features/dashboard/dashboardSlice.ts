@@ -3,24 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 
+interface DashboardType {
+  dashboardId: string;
+}
+
 interface DashboardState {
-  list: string[];
+  dashboards: DashboardType[];
 }
 
 const initialState: DashboardState = {
-  list: [],
+  dashboards: [{ dashboardId: 'first' }],
 };
 
 export const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState,
   reducers: {
-    addNewListItem: (state, action: PayloadAction<string>) => {
-      state.list.push(action.payload);
+    addNewDashboard: (state, action: PayloadAction<DashboardType>) => {
+      state.dashboards.push(action.payload);
     },
   },
 });
 
-export const { addNewListItem } = dashboardSlice.actions;
-export const selectDashboard = (state: RootState) => state.dashboard.list;
+export const { addNewDashboard } = dashboardSlice.actions;
+export const selectDashboard = (state: RootState) => state.dashboard.dashboards;
 export default dashboardSlice.reducer;
