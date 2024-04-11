@@ -3,11 +3,12 @@ import { useAppDispatch } from '../../app/hooks';
 import './InputButton.css';
 import { ListItemType } from '../listItem/listItemSlice';
 import { CardType } from '../card/cardSlice';
+import { DashboardType } from '../dashboard/dashboardSlice';
 
 interface InputButtonProps {
   target: string;
   callback: Function; // TODO: set a proper type
-  data: ListItemType | CardType;
+  data: ListItemType | CardType | DashboardType;
 }
 export const InputButton = ({ target, callback, data }: InputButtonProps) => {
   const [value, setValue] = useState('');

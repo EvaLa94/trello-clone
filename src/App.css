@@ -9,6 +9,64 @@
 .app {
   background-color: #005586;
   height: 100vh;
+  display: flex;
+  flex-direction: row;
+  color: rgb(159, 173, 188);
+}
+
+.dashboards-list-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+}
+
+.icon-container {
+  padding: 7px;
+  position: relative;
+  background-color: transparent;
+}
+
+.icon-container:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.open-menu .icon-container {
+  rotate: 180deg;
+}
+
+.close-menu > *:not(.dashboards-list-title),
+.close-menu > .dashboards-list-title > *:not(.icon-container) {
+  display: none;
+}
+
+.dashboards-list-container {
+  /* min-width: 250px; */
+  background-color: rgba(22, 26, 29, 0.9);
+  color: #b6c2cf;
+}
+
+.current-dashboard-container {
+  flex-grow: 1;
+}
+
+.dashboard-option,
+h2 {
+  padding: 12px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.dashboard-option {
+  font-size: 14px;
+}
+
+.dashboard-option:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
 }
 
 .dark-container,
