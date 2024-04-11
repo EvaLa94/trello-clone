@@ -1,14 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import './InputButton.css';
-import { ListItemType } from '../listItem/listItemSlice';
-import { CardType } from '../card/cardSlice';
-import { DashboardType } from '../dashboard/dashboardSlice';
+import { EditableTypes } from '../types';
 
 interface InputButtonProps {
   target: string;
   callback: Function; // TODO: set a proper type
-  data: ListItemType | CardType | DashboardType;
+  data: EditableTypes;
 }
 export const InputButton = ({ target, callback, data }: InputButtonProps) => {
   const [value, setValue] = useState('');

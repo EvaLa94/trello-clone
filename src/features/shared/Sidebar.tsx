@@ -34,6 +34,7 @@ export const Sidebar = ({ setCurrentDashboardId }: SidebarProps) => {
         </div>
         {dashboards.map((dashboard) => (
           <div
+            key={dashboard.dashboardId}
             className="dashboard-option"
             onClick={() => setCurrentDashboardId(dashboard.dashboardId)}
           >

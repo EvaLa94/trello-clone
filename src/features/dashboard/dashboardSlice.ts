@@ -26,9 +26,16 @@ export const dashboardSlice = createSlice({
     addNewDashboard: (state, action: PayloadAction<DashboardType>) => {
       state.dashboards.push(action.payload);
     },
+    updateDashboardName: (state, action: PayloadAction<DashboardType>) => {
+      state.dashboards.map((dashboard) => {
+        if (dashboard.dashboardId === action.payload.dashboardId) {
+          return (dashboard.title = action.payload.title);
+        }
+      });
+    },
   },
 });
 
-export const { addNewDashboard } = dashboardSlice.actions;
+export const { addNewDashboard, updateDashboardName } = dashboardSlice.actions;
 export const selectDashboard = (state: RootState) => state.dashboard.dashboards;
 export default dashboardSlice.reducer;

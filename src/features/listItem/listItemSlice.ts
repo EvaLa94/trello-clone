@@ -28,9 +28,16 @@ export const listItemSlice = createSlice({
     addNewListItem: (state, action: PayloadAction<ListItemType>) => {
       state.listItems.push(action.payload);
     },
+    updateListItemName: (state, action: PayloadAction<ListItemType>) => {
+      state.listItems.map((listItem) => {
+        if (listItem.listId === action.payload.listId) {
+          return (listItem.title = action.payload.title);
+        }
+      });
+    },
   },
 });
 
-export const { addNewListItem } = listItemSlice.actions;
+export const { addNewListItem, updateListItemName } = listItemSlice.actions;
 export const selectListItems = (state: RootState) => state.listItem.listItems;
 export default listItemSlice.reducer;

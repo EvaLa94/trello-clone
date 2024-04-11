@@ -1,12 +1,14 @@
 import { nanoid } from '@reduxjs/toolkit';
+
 import { useAppSelector } from '../../app/hooks';
 import { ListItem } from '../listItem/ListItem';
-import { selectListItems, addNewListItem } from '../listItem/listItemSlice';
+import { addNewListItem, selectListItems } from '../listItem/listItemSlice';
+import { EditableTitle } from '../shared/EditableTitle';
 import { InputButton } from '../shared/InputButton';
+import { selectDashboard, updateDashboardName } from './dashboardSlice';
 
-import './Dashboard.css';
 import '../../App.css';
-import { selectDashboard } from './dashboardSlice';
+import './Dashboard.css';
 
 interface dashboardProps {
   dashboardId: string;
@@ -23,7 +25,8 @@ export const Dashboard = ({ dashboardId }: dashboardProps) => {
   return (
     <main className="main-dashboard">
       <header className="title">
-        <h1>{currentDashboard.title}</h1>
+        <EditableTitle callback={updateDashboardName} data={currentDashboard} />
+        {currentDashboard.title}
       </header>
       <div className="list-item-container">
         {listItems.map((listItem) => (
@@ -31,7 +34,7 @@ export const Dashboard = ({ dashboardId }: dashboardProps) => {
         ))}
         <div className="light-container">
           <InputButton
-            target={'list'}
+            target="list"
             callback={addNewListItem}
             data={{ dashboardId, listId: nanoid(), title: '' }}
           />

@@ -6,6 +6,8 @@ import './ListItem.css';
 import '../../App.css';
 import { addNewCard, selectCards } from '../card/cardSlice';
 import { Card } from '../card/Card';
+import { EditableTitle } from '../shared/EditableTitle';
+import { updateListItemName } from './listItemSlice';
 
 interface ListItemProps {
   listId: string;
@@ -20,9 +22,9 @@ export const ListItem = ({ listId }: ListItemProps) => {
   );
   return (
     <div className="dark-container">
-      <h2>{currentListItem.title}</h2>
+      <EditableTitle callback={updateListItemName} data={currentListItem} />
       {cards.map((card) => (
-        <Card cardId={card.cardId} />
+        <Card key={card.cardId} cardId={card.cardId} />
       ))}
       <div className="input-button-container">
         <InputButton
